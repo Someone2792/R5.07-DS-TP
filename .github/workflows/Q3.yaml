@@ -1,0 +1,25 @@
+
+name: Q3 - Archive informations
+
+on: [push]
+
+jobs:
+  Archivage-XYZ-Q2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+      - name: Création de Q3_archive.txt
+        run: |
+          echo "Thibault Padois" > Q3_archive.txt
+          echo "executé le : $(date)" >> Q3_archive.txt
+          cat Q3.java >> Q3_archive.txt
+        # push
+      - name: Commit et push
+        run: |
+          git config --global user.name thibaultpd
+          git config --global user.email thibault.padois@etu.univ-lehavre.fr
+          git add Q3_archive.txt
+          git commit -m "Création de Q3_archive.txt"
+          git pull --rebase
+          git push
