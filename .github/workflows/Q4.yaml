@@ -1,0 +1,25 @@
+
+name: Q4 - Archive informations
+
+on: [push]
+
+jobs:
+  Archivage-Q4:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+      - name: Création de Q4_archive.txt
+        run: |
+          echo "Thibault Padois" > Q4_archive.txt
+          echo "executé le : $(date +%d-%m-%Y)" >> Q4_archive.txt
+          cat Q4.java >> Q4_archive.txt
+        # push
+      - name: Commit et push
+        run: |
+          git config --global user.name thibaultpd
+          git config --global user.email thibault.padois@etu.univ-lehavre.fr
+          git add Q4_archive.txt
+          git commit -m "Création de Q4_archive.txt"
+          git pull --rebase
+          git push
