@@ -1,5 +1,5 @@
 Thibault Padois
-executé le : Fri Nov 20 15:34:13 UTC 2026
+executé le : Fri Nov 20 15:36:06 UTC 2026
 public class Q3 {
     public static void main(String[] args) {
         int n = Integer.parseInt(args[0]);
