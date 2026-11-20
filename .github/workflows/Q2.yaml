@@ -1,32 +1,28 @@
 
 name: Q2 - Archive informations
 
-on:
-  push:
-    paths:
-      - 'XYZ.txt'
+on: [push]
 
 jobs:
-  archive:
+  Archivage-XYZ-Q2:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Creer archive
+      - name: checkout
+        uses: actions/checkout@v4
+      - name: Création de Q2_archive_XYZ.txt
         run: |
           echo "Thibault Padois" > Q2_archive_XYZ.txt
-          echo "Date : $(date)" >> Q2_archive_XYZ.txt
-          echo "Contenu de XYZ.txt :" >> Q2_archive_XYZ.txt
+          echo "executé le : $(date)" >> Q2_archive_XYZ.txt
+          echo "Contenu de XYZ.txt : " >> Q2_archive_XYZ.txt
           cat XYZ.txt >> Q2_archive_XYZ.txt
           echo "" >> Q2_archive_XYZ.txt
-          echo "Taille de XYZ.txt :" >> Q2_archive_XYZ.txt
-          wc -c XYZ.txt >> Q2_archive_XYZ.txt
-
-      - name: Push archive
+          echo "Taille XYZ.txt : $(wc -c < XYZ.txt) octets" >> Q2_archive_XYZ.txt
+      # push
+      - name: Commit et push
         run: |
-          git config user.name "Someone2792"
-          git config user.email "padoist@gmail.com"
+          git config --global user.name thibaultpd
+          git config --global user.email thibault.padois@etu.univ-lehavre.fr
           git add Q2_archive_XYZ.txt
-          git commit -m "Ajout archive Q2"
+          git commit -m "Création de Q2_archive_XYZ.txt"
+          git pull --rebase
           git push
