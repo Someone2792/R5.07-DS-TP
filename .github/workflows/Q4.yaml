@@ -12,7 +12,7 @@ jobs:
       - name: Création de Q4_archive_[date].txt
         run: |
           DATE=$(date +%d-%m-%Y)
-          echo "Ton Nom Prenom" > Q4_archive_$DATE.txt
+          echo "Thibault Padois" > Q4_archive_$DATE.txt
           cat Q4.java >> Q4_archive_$DATE.txt
 
       - name: Push
