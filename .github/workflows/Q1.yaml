@@ -1,26 +1,21 @@
 
 name: Q1 - Archive XYZ
 
-on:
-  push:
-    paths:
-      - 'XYZ.txt'
+on: [push]
 
 jobs:
-  archive:
+  Archivage-XYZ:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Recuperer le depot
+      - name: Check out repository code
         uses: actions/checkout@v4
+      - name: Copie de XYZ.txt
+        run: cat XYZ.txt > Q1_archive_XYZ.txt
 
-      - name: Copier le fichier
-        run: cp XYZ.txt Q1_archive_XYZ.txt
-
-      - name: Envoyer le fichier
+      - name: Commit et push
         run: |
-          git config user.name "Someone2792"
-          git config user.email "padoist@gmail.com"
+          git config --global user.name thibaultpd
+          git config --global user.email thibault.padois@etu.univ-lehavre.fr
           git add Q1_archive_XYZ.txt
-          git commit -m "Ajout archive Q1"
+          git commit -m "Archivage de XYZ.txt dans Q1_archive_XYZ.txt"
           git push
