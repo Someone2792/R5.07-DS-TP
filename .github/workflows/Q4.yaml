@@ -9,17 +9,16 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v4
-      - name: Création de Q4_archive.txt
+      - name: Création de Q4_archive_[date].txt
         run: |
-          echo "Thibault Padois" > Q4_archive.txt
-          echo "executé le : $(date +%d-%m-%Y)" >> Q4_archive.txt
-          cat Q4.java >> Q4_archive.txt
-        # push
-      - name: Commit et push
+          DATE=$(date +%d-%m-%Y)
+          echo "Ton Nom Prenom" > Q4_archive_$DATE.txt
+          cat Q4.java >> Q4_archive_$DATE.txt
+
+      - name: Push
         run: |
-          git config --global user.name thibaultpd
-          git config --global user.email thibault.padois@etu.univ-lehavre.fr
-          git add Q4_archive.txt
-          git commit -m "Création de Q4_archive.txt"
-          git pull --rebase
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Q4_archive_*.txt
+          git commit -m "Ajout archive Q4"
           git push
