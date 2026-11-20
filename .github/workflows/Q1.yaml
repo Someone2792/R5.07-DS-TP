@@ -19,8 +19,8 @@ jobs:
 
       - name: Envoyer le fichier
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "Someone2792"
+          git config user.email "padoist@gmail.com"
           git add Q1_archive_XYZ.txt
           git commit -m "Ajout archive Q1"
           git push
