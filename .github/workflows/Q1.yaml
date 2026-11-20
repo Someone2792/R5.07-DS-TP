@@ -1,0 +1,10 @@
+name: Q1 - Archive XYZ
+
+on:
+  push:
+    paths:
+      - 'XYZ.txt'
+
+jobs:
+  archive:
+    runs-on: ubuntu-latest
